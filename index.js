@@ -1,33 +1,36 @@
-let car = { make:"chevrolet", model: "genovation gxe" };
+let car = { make: "chevrolet", model: "genovation gxe" };
 let car2 = { make: "ferrari", model: "portofino" };
 let car3= { make: "mclaren", model: "720S" };
 
+let cars = [car, car2, car3];
+
 let state= {
     pageHeader: "FAST CARS",
-    car: [car, car2, car3],
+    cars: cars
 };
-
 function renderCar(){
-    carStr = "";
-    state.car.forEach(function (car, index) {
-        carStr =+ `
-        <div>
-        ${car.make} is ${car.model}
-        </div>`;
+    carStr = ''
+    cars.forEach(function(car) {
+        carStr += `<div onclick='clicked(this)'> 
+        ${car.make} makes: ${car.model}.
+        </div>`
     });
-    return carStr;
+return carStr
+
+}
+function clicked(carDiv){
+
 }
 
-function render(){
-   
+function render (){
     htmlString = `<div>
                     <h1>${state.pageHeader}</h1>
                     ${renderCar()}
                  </div>`;
-renderCar();
+    document.getElementById("app").innerHTML = htmlString;
     
-    appElement = document.getElementById("app");
-    appElement.innerHTML = htmlString;
+    renderCar();
+}
 
-                }
 render();
+ 
